@@ -10,7 +10,30 @@ import MailIcon from '@material-ui/icons/Mail';
 import CreateIcon from '@material-ui/icons/Create';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import "firebase/firestore";
+import { initializeApp } from "firebase/app"
+import { getFirestore } from "firebase/firestore"
+import { collection, addDoc } from "firebase/firestore"; 
 
+const app = initializeApp({
+  apiKey: "AIzaSyDMgozCsU7O90DeS5C45Bnba3zWTrAQioM",
+  authDomain: "dillonhowellcom.firebaseapp.com",
+  databaseURL: "https://dillonhowellcom-default-rtdb.firebaseio.com",
+  projectId: "dillonhowellcom",
+  storageBucket: "dillonhowellcom.appspot.com",
+  messagingSenderId: "616775924429",
+  appId: "1:616775924429:web:ad91f8b948e47d09d5c784",
+  measurementId: "G-26HRH0PLH9"
+});
+
+
+const db = getFirestore();
 
 const style = {
     position: 'absolute',
@@ -21,11 +44,29 @@ const style = {
 const actions = [
     { icon: <CreateIcon />, name: 'Email' },
   ];
-  
+
 export const Home = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [openEmail, setOpenEmail] = useState(false)
+    const handleEmailOpen = () => setOpenEmail(true);
+    const handleEmailClose = () => setOpenEmail(false);
+    const [emailValue, setEmailValue] = useState("");
+    const [nameValue, setNameValue] = useState("");
+    const [aboutValue, setAboutValue] = useState("");
+
+
+    const handleEmailSubmit = async () => {
+        setOpenEmail(false)
+
+        const contactRef = await addDoc(collection(db, "contacts"),{
+          email: emailValue,
+          name: nameValue,
+          about: aboutValue,
+        })
+
+    }
 
     return(
       <Fragment >
@@ -33,21 +74,54 @@ export const Home = () => {
 
         <SpeedDial
           ariaLabel="SpeedDial openIcon example"
-          icon={<MailIcon />}
+          icon={<MailIcon openIcon={<CreateIcon />} />}
         >
           {actions.map((action) => (
             <SpeedDialAction
               key={action.name}
               icon={action.icon}
               tooltipTitle={action.name}
-              onClick={window.open('mailto:dillonleehowell@gmail.com?subject=Hello Dillon&body=Please except my offer of 2 Million Dollars'),
-            console.log('hello')}
+              onClick={handleEmailOpen}
             />
           ))}
         </SpeedDial>
 
       </div>
- 
+      <Dialog open={openEmail} onClose={handleEmailClose}>
+        <DialogTitle>Let's talk</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Get in contact with me by entering your info below.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Name"
+            fullWidth
+            variant="standard"
+            onChange={(e) => setNameValue(e.target.value)}
+          />     <TextField
+          autoFocus
+          margin="dense"
+          type="email"
+          label="Email Address"
+          fullWidth
+          variant="standard"
+          onChange={(e) => setEmailValue(e.target.value)}
+        />     <TextField
+        autoFocus
+        margin="dense"
+        label="About"
+        fullWidth
+        variant="standard"
+        onChange={(e) => setAboutValue(e.target.value)}
+      />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleEmailClose}>Cancel</Button>
+          <Button onClick={handleEmailSubmit}>Submit</Button>
+        </DialogActions>
+      </Dialog>
 
                <Modal open={open} onClose={handleClose}>
         <Box sx={style} className='dancingBox'>
@@ -56,7 +130,7 @@ export const Home = () => {
       </Modal>
 
         <div className='contact-me'>
-            <Button variant='outlined' size='large' startIcon={<MailIcon/>}>
+            <Button variant='outlined' onClick={handleEmailOpen} size='large' startIcon={<MailIcon/>}>
                 Contact Me
             </Button>
         </div>
