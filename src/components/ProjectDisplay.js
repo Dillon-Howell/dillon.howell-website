@@ -32,7 +32,7 @@ const itemData = [
 export const ProjectDisplay = () => {
   return (
       <div >
-    <ImageList sx={{ width: 600, height: 450 }}>
+    <ImageList sx={{ width: 600, height: 500 }}>
       <ImageListItem key="Subheader" cols={2}>
       </ImageListItem>
       {itemData.map((item) => (

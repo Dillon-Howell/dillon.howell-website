@@ -3,7 +3,9 @@
     --clr-neon: hsl(317 100% 54%);
     --clr-bg: hsl(323 21% 16%);
   }
-  
+  * {
+	box-sizing: border-box;
+}
   *,
   *::before,
   *::after {
@@ -15,6 +17,7 @@
     background: var(--clr-bg);
     font-family: "Balsamiq Sans", cursive;
     color: var(--clr-neon);
+    margin: 0;
   }
   
   .neon-button {
@@ -50,7 +53,6 @@
   .neon-text {
     font-size: 2rem;
     font-family: 'Fredoka One', cursive;
-    cursor: pointer;
     text-decoration: none;
     color: var(--clr-neon);
     text-align: center;
