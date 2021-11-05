@@ -151,26 +151,17 @@ export const Home = () => {
 
                     <div className='grid-container-3'>
                         <div>
-                            <p className="neon-text" style={{color:'rgb(235, 210, 52)'}}>JavaScript</p>
-                            <p className="neon-text" style={{color:'rgb(92, 244, 255)'}}>React</p>    
-                            <p className="neon-text" style={{color:'rgb(5, 143, 255)'}}>Python</p>    
-                            <p className="neon-text" style={{color:'rgb(255, 134, 5)'}}>Java</p>    
-                            <p className="neon-text" style={{color:'rgb(82, 160, 255)'}}>CSS</p>    
-                            <p className="neon-text" style={{color:'rgb(82, 197, 255)'}}>C</p>    
-                            <p className="neon-text" style={{color:'rgb(82, 197, 255)'}}>C++</p>    
-                            <p className="neon-text" style={{color:'rgb(255, 166, 82)'}}>AWS</p>    
+                            <p className="neon-text" style={{color:'rgb(235, 210, 52)'}}>JavaScript<p style={{color:'white'}}>Proficient</p></p>
+                            <p className="neon-text" style={{color:'rgb(92, 244, 255)'}}>React<p style={{color:'white'}}>Proficient</p></p>    
+                            <p className="neon-text" style={{color:'rgb(5, 143, 255)'}}>Python<p style={{color:'white'}}>Proficient</p></p>    
+                            <p className="neon-text" style={{color:'rgb(255, 134, 5)'}}>Java<p style={{color:'white'}}>Intermediate</p></p>         
                         </div>
                         <div>
-                            <p className="neon-text" style={{color:'white'}}>Proficient</p>    
-                            <p className="neon-text" style={{color:'white'}}>Proficient</p>    
-                            <p className="neon-text" style={{color:'white'}}>Proficient</p>                              
-                            <p className="neon-text" style={{color:'white'}}>Intermediate</p>                              
-                            <p className="neon-text" style={{color:'white'}}>Intermediate</p>                              
-                            <p className="neon-text" style={{color:'white'}}>Intermediate</p>                              
-                            <p className="neon-text" style={{color:'white'}}>Intermediate</p>                              
-                            <p className="neon-text" style={{color:'white'}}>Intermediate</p>                              
+                            <p className="neon-text" style={{color:'rgb(82, 160, 255)'}}>CSS<p style={{color:'white'}}>Intermediate</p></p>     
+                            <p className="neon-text" style={{color:'rgb(82, 197, 255)'}}>C<p style={{color:'white'}}>Intermediate</p></p>     
+                            <p className="neon-text" style={{color:'rgb(82, 197, 255)'}}>C++<p style={{color:'white'}}>Intermediate</p></p>        
+                            <p className="neon-text" style={{color:'rgb(255, 166, 82)'}}>AWS<p style={{color:'white'}}>Intermediate</p></p> 
                         </div>
-                        
                     </div>
            
                 </div>

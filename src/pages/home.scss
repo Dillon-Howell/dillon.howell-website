@@ -29,6 +29,36 @@
     100%   {background-color:red; left:35%; top:35%; transform: translate(-50%, -50%);}
   }
 
+  @keyframes text-flicker
+  {
+    0% {box-shadow: none; text-shadow: none;}
+    3% {box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;}
+    30% {box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;}
+    31% {box-shadow: none; text-shadow: none;}
+    33% {box-shadow: none; text-shadow: none;}
+    34% {box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;}
+    37% {box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;}
+    38% {box-shadow: none; text-shadow: none;}
+    40% {box-shadow: none; text-shadow: none;}
+    41% {box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;}
+    100% {box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;}
+  }
+
+  @keyframes shadow-flicker
+  {
+    0%{opacity:0%;}
+    3%{opacity: 100%;}
+    30%{opacity: 100%;}
+    31%{opacity: 0%;}
+    33%{opacity: 0%;}
+    34%{opacity: 100%;}
+    37%{opacity: 100%;}
+    38%{opacity: 0%;}
+    40%{opacity: 0%;}
+    41%{opacity: 100%;}
+    100%{opacity: 100%;}
+  }
+
   .dancingBox{
     animation: myanimation 10s infinite;
     border-radius: 50%;
@@ -36,12 +66,14 @@
   }
 
   .contact-me{
+    background-color: white;
     position: absolute;
     top: 2rem;
     right: 5rem;
   }
-
-  .neon-button {
+  // $randomNumber: random(11);
+  .neon-button { //none 0 ease 0 1 normal none running
+    animation: text-flicker 20s ease infinite;
     font-size: 4rem;
     font-family: 'Fredoka One', cursive;
     display: inline-block;
@@ -54,11 +86,40 @@
     -ms-transform: skewY(100deg); /* IE 9 */
     transform: skewY(-8deg);
     text-align: center;
-    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
     position: relative;
   }
+
   
+  .neon-button::before {
+    animation: shadow-flicker 20s ease infinite;
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+
+  .neon-text::after,
+  .neon-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+
   .neon-header {
     font-size: 4rem;
     font-family: 'Fredoka One', cursive;
@@ -72,12 +133,20 @@
   }
 
   .neon-text {
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
     font-size: 2rem;
     font-family: 'Fredoka One', cursive;
+    display: inline-block;
+    cursor: pointer;
     text-decoration: none;
     color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    -ms-transform: skewY(100deg); /* IE 9 */
+    transform: skewY(-8deg);
     text-align: center;
-    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
     position: relative;
   }
 
@@ -95,51 +164,31 @@
     filter: blur(1.5em);
     opacity: 0.7;
   }
-  
 
-  .neon-button::before {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    background: var(--clr-neon);
-    top: 120%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  
-    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
-    filter: blur(1em);
-    opacity: 0.7;
-  }
-  
-  .neon-button::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 0 2em 0.5em var(--clr-neon);
-    opacity: 0;
-    background-color: var(--clr-neon);
-    z-index: -1;
-    transition: opacity 100ms linear;
-  }
-  
+
   .neon-button:hover,
   .neon-button:focus {
     color: var(--clr-bg);
     text-shadow: none;
   }
+
   
+  
+  
+  .neon-text:hover::before,
+  .neon-text:focus::before,
   .neon-button:hover::before,
   .neon-button:focus::before {
     opacity: 1;
   }
+  
+  .neon-text:hover::after,
+  .neon-text:focus::after,
   .neon-button:hover::after,
   .neon-button:focus::after {
     opacity: 1;
   }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -170,16 +219,16 @@ gap: 10rem;
     grid-auto-rows: minmax(150px, auto);
     justify-content: center;
     margin-top: 2rem;
-    gap: 10rem;
+    gap: 20rem;
 }
 
 .grid-container-3{
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 200px);
     grid-auto-rows: minmax(150px, auto);
     justify-content: center;
     margin-top: 2rem;
-    gap: 10rem;
+    column-gap: 10rem;
 }
 .mobile-contact{
     display: none;
@@ -195,6 +244,15 @@ gap: 10rem;
 }
 
   @media only screen and (max-width: 600px) {
+
+    .grid-container-3{
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-auto-rows: minmax(150px, auto);
+      justify-content: center;
+      margin-top: 2rem;
+      column-gap: 3rem;
+  }
     .contact-me{
         display: none;
       }
@@ -216,7 +274,7 @@ gap: 10rem;
         justify-content: left;
         align-content: left;
         margin: auto;
-        height: 10rem;
+        height: 20rem;
       }
 
     .grid-container-1{
