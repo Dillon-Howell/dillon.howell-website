@@ -12,8 +12,6 @@ const itemData = [
       img: bohnBot,
       title: 'BohnBot',
       author: 'June 2021',
-      rows: 2,
-      cols: 2,
       featured: true,
     },
     {
@@ -30,16 +28,22 @@ const itemData = [
   ];
 
 export const ProjectDisplay = () => {
+    let projectsHeight = 500;
+    let projectsWidth = 600;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        projectsHeight = 400;
+        projectsWidth = 350; 
+      }
   return (
-      <div style={{paddingLeft:'-20rem'}}>
-    <ImageList sx={{ width: 600, height: 500 }}>
+      <div>
+    <ImageList   sx={{ width: projectsWidth, height: projectsHeight }}>
       <ImageListItem key="Subheader" cols={2}>
       </ImageListItem>
       {itemData.map((item) => (
         <ImageListItem key={item.img}>
           <img
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            src={`${item.img}`}
+            srcSet={`${item.img}`}
             alt={item.title}
             loading="lazy"
           />
