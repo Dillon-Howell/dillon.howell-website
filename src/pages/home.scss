@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Fredoka+One&display=swap');
 :root {
-    --clr-neon: hsl(317 100% 54%);
-    --clr-bg: hsl(323 21% 16%);
+    --clr-neon: hsl(195 90% 61%);
+    --clr-bg: hsl(195 60% 11%);
   }
   * {
 	box-sizing: border-box;
@@ -20,6 +20,27 @@
     margin: 0;
   }
   
+  @keyframes myanimation
+  {
+    0%   {background-color:red; left:35%; top:35%; transform: translate(-50%, -50%);}
+    25%   {background-color:yellow; left:65%; top:35%; transform: translate(-50%, -50%);}
+    50%   {background-color:blue; left:65%; top:80%; transform: translate(-50%, -50%);}
+    75%   {background-color:green; left:35%; top:80%; transform: translate(-50%, -50%);}
+    100%   {background-color:red; left:35%; top:35%; transform: translate(-50%, -50%);}
+  }
+
+  .dancingBox{
+    animation: myanimation 10s infinite;
+    border-radius: 50%;
+    padding: 30px;
+  }
+
+  .contact-me{
+    position: absolute;
+    top: 2rem;
+    right: 5rem;
+  }
+
   .neon-button {
     font-size: 4rem;
     font-family: 'Fredoka One', cursive;
@@ -160,7 +181,9 @@ gap: 10rem;
     margin-top: 2rem;
     gap: 10rem;
 }
-
+.mobile-contact{
+    display: none;
+}
   .dillon-pic{
     display: flex;
     justify-content: center;
@@ -172,6 +195,22 @@ gap: 10rem;
 }
 
   @media only screen and (max-width: 600px) {
+    .contact-me{
+        display: none;
+      }
+
+    .mobile-contact{
+        position: fixed;
+        z-index: 1;
+        bottom: 4rem;
+        right: 1rem;
+        display: flex;
+    }
+
+    .dancer{
+        height: 5rem;
+      }
+
     .dillon-pic{
         display: flex;
         justify-content: left;
