@@ -29,7 +29,7 @@ const itemData = [
 
 export const ProjectDisplay = () => {
     let projectsHeight = 500;
-    let projectsWidth = 600;
+    let projectsWidth = 500;
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         projectsHeight = 400;
         projectsWidth = 350; 
