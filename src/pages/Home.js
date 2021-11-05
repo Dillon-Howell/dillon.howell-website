@@ -22,7 +22,7 @@ export const Home = () => {
 
     return(
       <Fragment >
-          <div style={ isMobile ? {paddingLeft:'70vh'} : null}>
+          <div style={isMobile? {paddingLeft:'25rem'}: null}>
             {/* Modify Gap Mobile */}
             <Grid container marginTop='5rem' gap={isMobile? 30 : 60} justifyContent="center" alignItems="flex-start">
                     <Grid>
@@ -64,11 +64,7 @@ export const Home = () => {
                 
                 <Grid item >
                 <p className="neon-header">Projects</p>
-                    <Grid container marginTop='0rem' >
-                        <Grid item >
-                            <ProjectDisplay/>
-                        </Grid>
-                        </Grid>
+                <ProjectDisplay />                   
                 </Grid>
 
             </Grid>

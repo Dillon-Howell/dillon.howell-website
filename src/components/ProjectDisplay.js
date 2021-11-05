@@ -31,7 +31,7 @@ const itemData = [
 
 export const ProjectDisplay = () => {
   return (
-      <div >
+      <div style={{paddingLeft:'-20rem'}}>
     <ImageList sx={{ width: 600, height: 500 }}>
       <ImageListItem key="Subheader" cols={2}>
       </ImageListItem>
