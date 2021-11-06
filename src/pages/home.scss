@@ -165,10 +165,9 @@
     padding: 0.25em 1em;
     border-radius: 0.25em;
     -ms-transform: skewY(100deg); /* IE 9 */
-    transform: skewY(8deg);
+    transform: skewY(-8deg);
     text-align: center;
     position: relative;
-    margin:auto;
   }
 
   .project-img{
@@ -262,10 +261,11 @@ gap: 10rem;
 .grid-container-4{
   display: grid;
   grid-template-columns: repeat(2, 200px);
+  grid-auto-rows: minmax(150px, 160px);
   justify-content: center;
   margin-top: 2rem;
-  gap:10rem;
-  row-gap: 10rem;
+  column-gap: 10rem;
+  row-gap: 20rem;
 }
 
 .mobile-contact{
@@ -288,7 +288,7 @@ gap: 10rem;
       grid-auto-rows: minmax(150px, auto);
       justify-content: center;
       margin-top: 2rem;
-      column-gap: 0rem;
+      column-gap: 1rem;
       margin-left: 40%;
     }
 
@@ -392,7 +392,7 @@ gap: 10rem;
         text-align: center;
         text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
         position: relative;
-        margin:auto;
+        // margin: auto;
       }
     
       .neon-header::before {
