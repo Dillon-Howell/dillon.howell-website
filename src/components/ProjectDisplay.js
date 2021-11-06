@@ -6,6 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import bohnBot  from '../pics/BohnBot.PNG'
 import bohnZone from '../pics/BohnZone.PNG'
 import kanyeQuote from '../pics/kanyeQuote.png'
+import websitePic from '../pics/website.png'
+import { height } from '@mui/system';
 
 const itemData = [
     {
@@ -36,7 +38,7 @@ export const ProjectDisplay = () => {
       }
   return (
       <div>
-    <ImageList   sx={{ width: projectsWidth, height: projectsHeight }}>
+    {/* <ImageList   sx={{ width: projectsWidth, height: projectsHeight }}>
       <ImageListItem key="Subheader" cols={2}>
       </ImageListItem>
       {itemData.map((item) => (
@@ -60,7 +62,18 @@ export const ProjectDisplay = () => {
           />
         </ImageListItem>
       ))}
-    </ImageList>
+    </ImageList> */}
+        <div className='grid-container-4'>
+                        <div>
+                            <p className="neon-project" style={{color:'white'}}>BohnBot<img className='project-img' src={bohnBot} alt='bohnbot'></img></p>
+                            <a target="_blank" href="https://www.thebohnzone.com/good-morning" className="neon-project" style={{color:'white'}} rel="noreferrer">BohnZone<img className='project-img' src={bohnZone} alt='bohnzone'></img></a>       
+                        </div>
+                        <div>
+                        <p className="neon-project" style={{color:'white'}}>KanyeQuotes<img className='project-img' src={kanyeQuote} alt='kanyeQuote'></img></p>      
+                        <a target="_blank" href="https://www.dillonhowell.com"className="neon-project" style={{color:'white'}} rel="noreferrer">DillonHowell.com<img className='project-img' src={websitePic} alt='kanyeQuote'></img></a>       
+
+                        </div>
+                    </div>
     </div>
   );
 }
