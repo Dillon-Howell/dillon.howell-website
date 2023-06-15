@@ -65,7 +65,7 @@ function App() {
   const inputRef = useRef();
 
   useEffect(() => {
-    inputRef.current.focus();
+    // inputRef.current.focus();
   }, []);
 
   const handleCommand = (commands) => {
