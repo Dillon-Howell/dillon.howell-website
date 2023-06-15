@@ -557,7 +557,6 @@ function App() {
                 style={{ display: "flex", justifyContent: "flex-start" }}
               >
                 <span
-                className="input"
                   style={{
                     color: "#008c00",
                     fontFamily: "Fira Code, monospace",
