@@ -58,7 +58,7 @@ function App() {
     },
   });
   
-  const [previousCommands, setPreviousCommands] = useState([]);
+  const [previousCommands, setPreviousCommands] = useState(["executing help Available commands: clear, pwd, echo, date, fortune, roll, help,","executing help ls, cd, cat, whoami, contact, mkdir, rmdir, touch, write, history, magic8ball, cow, hack",]);
   const [currentCommand, setCurrentCommand] = useState("");
   const [currentPath, setCurrentPath] = useState(["home", "visitor"]);
 
@@ -130,7 +130,7 @@ function App() {
         setPreviousCommands((previousCommands) => {
           return [
             ...previousCommands,
-            "executing roll Available commands: clear, pwd, echo, date, help",
+            "executing help Available commands: clear, pwd, echo, date, fortune, roll, help,","executing help ls, cd, cat, whoami, contact, mkdir, rmdir, touch, write, history, magic8ball, cow, hack",
           ];
         });
         break;
