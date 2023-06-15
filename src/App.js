@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { TextInput } from "./components/textInput";
 import { TextInputBox } from "./components/textInputBox";
@@ -62,11 +62,6 @@ function App() {
   const [currentCommand, setCurrentCommand] = useState("");
   const [currentPath, setCurrentPath] = useState(["home", "visitor"]);
 
-  const inputRef = useRef();
-
-  useEffect(() => {
-    // inputRef.current.focus();
-  }, []);
 
   const handleCommand = (commands) => {
     let newMockDirectory;
@@ -581,7 +576,7 @@ function App() {
             );
           }
         })}
-        <TextInput ref={inputRef}
+      <TextInput 
           key={"hotInput"}
           onEnter={handleEnter}
           text={currentCommand}
