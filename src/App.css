@@ -1,5 +1,55 @@
 .App {
   text-align: center;
+  background-color: black;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+body {
+  background-color: black;
+}
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+.input,
+.textarea {
+  border: 1px solid #ccc;
+  max-height: 20px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+.input-wrap {
+  position: relative;
+}
+.input-wrap .input {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.width-machine {
+  /*   Sort of a magic number to add extra space for number spinner */
+  padding: 0 1rem;
+}
+
+.textarea {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+}
+
+
+
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 .App-logo {
