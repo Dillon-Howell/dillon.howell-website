@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { TextInput } from "./components/textInput";
 import { TextInputBox } from "./components/textInputBox";
@@ -61,6 +61,12 @@ function App() {
   const [previousCommands, setPreviousCommands] = useState(["executing help Available commands: clear, pwd, echo, date, fortune, roll, help,","executing help ls, cd, cat, whoami, contact, mkdir, rmdir, touch, write, history, magic8ball, cow, hack",]);
   const [currentCommand, setCurrentCommand] = useState("");
   const [currentPath, setCurrentPath] = useState(["home", "visitor"]);
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleCommand = (commands) => {
     let newMockDirectory;
@@ -575,7 +581,7 @@ function App() {
             );
           }
         })}
-        <TextInput
+        <TextInput ref={inputRef}
           key={"hotInput"}
           onEnter={handleEnter}
           text={currentCommand}
