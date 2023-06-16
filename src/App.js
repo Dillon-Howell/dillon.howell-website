@@ -559,7 +559,7 @@ function App() {
       <TextInputBox>
         {previousCommands.map((command, index) => {
           let temp = command.split(" ");
-          if (temp[1] && (temp[1] === "cat" || temp[1] === "cow" || temp[1] === "hack") ) {
+          if (temp[1] && (temp[1] === "cat" || temp[1] === "cow" || temp[1] === "hack" || temp[1] === "help") ) {
             temp[0] = "";
             temp[1] = ""
             
