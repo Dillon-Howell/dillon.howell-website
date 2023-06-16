@@ -140,9 +140,16 @@ function App() {
         setPreviousCommands((previousCommands) => {
           return [
             ...previousCommands,
-            "executing help Available commands: clear, pwd, echo, date, fortune, roll, help,","executing help ls, cd, cat, whoami, contact, mkdir, rmdir, touch, write, history, magic8ball, cow, hack",
+            "executing help Available commands: clear, pwd, echo, date, fortune, roll, help,",
           ];
         });
+
+        setPreviousCommands((previousCommands) => {
+          return [
+            ...previousCommands,
+         "executing help ls, cd, cat, whoami, contact, mkdir, rmdir, touch, write, history, magic8ball, cow, hack",
+          ];
+        })
         break;
       case "ls":
         handleLS();
