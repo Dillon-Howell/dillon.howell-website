@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import { TextInput } from "./components/textInput";
 import { TextInputBox } from "./components/textInputBox";
@@ -6,6 +6,7 @@ import formattedResume from "./files/resume";
 import formattedReadMe from "./files/readme";
 import formattedPortfolio from "./files/portfolio";
 import emailjs from 'emailjs-com';
+import { IntroModal } from "./components/introModal";
 
 function App() {
   const [mockDirectory, setMockDirectory] = useState({
@@ -58,9 +59,17 @@ function App() {
     },
   });
   
-  const [previousCommands, setPreviousCommands] = useState(["executing help Available commands: clear, pwd, echo, date, fortune, roll, help,","executing help ls, cd, cat, whoami, contact, mkdir, rmdir, touch, write, history, magic8ball, cow, hack",]);
+  const [previousCommands, setPreviousCommands] = useState([]);
   const [currentCommand, setCurrentCommand] = useState("");
   const [currentPath, setCurrentPath] = useState(["home", "visitor"]);
+  const [toggleIntro, setToggleIntro] = useState(true);
+
+  const introHandler = (value) => {
+    if (toggleIntro) {
+      setToggleIntro(toggleIntro => !toggleIntro)
+    }
+    return toggleIntro;
+  }
 
 
   const handleCommand = (commands) => {
@@ -195,7 +204,6 @@ function App() {
         const newDir = commands[1];
         if (newDir) {
           const currentDir = getCurrentDirectory();
-          console.log("here", currentDir);
           if (!currentDir[newDir]) {
             currentDir[newDir] = {}; // create new directory
             setPreviousCommands((previousCommands) => {
@@ -524,8 +532,6 @@ function App() {
         return null;
       }
     }
-
-    console.log(currentDir);
     return currentDir;
   };
 
@@ -549,12 +555,12 @@ function App() {
           if (temp[1] && (temp[1] === "cat" || temp[1] === "cow" || temp[1] === "hack") ) {
             temp[0] = "";
             temp[1] = ""
-      
+            
             command = temp.join(" ");
             return (
               <div
-                key={index}
-                style={{ display: "flex", justifyContent: "flex-start" }}
+              key={index}
+              style={{ display: "flex", justifyContent: "flex-start" }}
               >
                 <span
                   style={{
@@ -572,16 +578,18 @@ function App() {
           } else {
             return (
               <TextInput key={index} text={command} previousCommand={true} />
-            );
-          }
-        })}
-      <TextInput 
+              );
+            }
+          })}
+      <TextInput
+          intro={introHandler}
           key={"hotInput"}
           onEnter={handleEnter}
           text={currentCommand}
           onChange={(e) => setCurrentCommand(e.target.value)}
         />
       </TextInputBox>
+          
     </div>
   );
 }

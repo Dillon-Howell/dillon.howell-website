@@ -1,10 +1,18 @@
 
 import React, { useEffect, useState, useRef } from "react";
 // 008c00
+import { IntroModal } from "./introModal";
 
-export const TextInput = ({onEnter, text, previousCommand}) => {
+export const TextInput = ({onEnter, text, intro, previousCommand}) => {
   const staticPost = previousCommand ? true : false;
   const [value, setValue] = useState(text);
+  const [showModal, setShowModal] = useState(intro);
+
+  // const handleModal = () => {
+  //   if (!staticPost) {
+      // document.getElementById("currentInput").focus()
+  //   }
+  // };
 
   
   const flag = value.split(" ")[0] ? value.split(" ")[0] === "executing" ? true : false : false
@@ -42,14 +50,22 @@ export const TextInput = ({onEnter, text, previousCommand}) => {
 
   return (
     <>
+      <div>
+  <IntroModal modalToggle={showModal} handleFocus={
+    () => { if(inputRef.current) {
+      setShowModal(intro)
+      inputRef.current.focus()
+    }} 
+  }/>
+      </div>
       <div style={{ display: "flex", flexDirection: "row" }}>
         {flag ? null :
         <span style={{ color: "#008c00", fontFamily: "Fira Code, monospace" }}>
-          {`visitor@dillonhowell.com ${""} ~ % `}
+          {`visitor@dillonhowell.com ${""} ~ %` + " "}
         </span>
   }
         <span
-        ref={inputRef}
+        ref={staticPost ? null : inputRef}
           className="input"
           onKeyDown={(e) => {handleKeeyDown(e)}}
           style={{
@@ -61,7 +77,6 @@ export const TextInput = ({onEnter, text, previousCommand}) => {
             whiteSpace: "nowrap",
             alignContent:'left',
             textAlign: 'left',
-
           }}
           contentEditable= {staticPost ? false : true}
           onInput={(e) => {
@@ -74,7 +89,7 @@ export const TextInput = ({onEnter, text, previousCommand}) => {
           </span>
         <span
           style={{
-            marginLeft: -5,
+            marginLeft: '5px',
             color: "#008c00",
             fontFamily: "Fira Code, monospace",
           }}
